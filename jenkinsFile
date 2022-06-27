@@ -6,16 +6,18 @@ pipeline {
   stage('Build') {
     steps{
      timeout(time:1, unit:'MINUTES') {
-      sh 'mvn clean package'
+      sh "mvn clean package"
     } 
+    }
+    
     }
     
 
     post{
     failure{
-    sh 'echo failed to run all stages!'
+    sh "echo failed to run all stages!"
     }
     }
    
-  }
+
 }
