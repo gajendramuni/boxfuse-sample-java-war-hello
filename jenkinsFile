@@ -6,7 +6,7 @@ pipeline {
   stage('Build') {
     steps{
      timeout(time:1, unit:'MINUTES') {
-      sh "mvn clean package"
+      sh 'mvn clean package'
     } 
     }
     
@@ -17,6 +17,8 @@ pipeline {
     failure{
     sh "echo failed to run all stages!"
     }
+    }
+    
     }
    
 
