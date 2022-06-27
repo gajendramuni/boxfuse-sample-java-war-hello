@@ -6,7 +6,6 @@ pipeline {
   stage('Build') {
     steps{
      timeout(time:1, unit:'MINUTES') {
-      sh 'cd boxfuse-sample-java-war-hello'
       sh 'mvn clean package'
     } 
     }
@@ -16,9 +15,10 @@ pipeline {
       sh 'boxfuse run target/hello-1.0.war'  
     }
     
-    
+    post{
     failure{
     sh 'echo failed to run all stages!'
+    }
     }
    
   }
