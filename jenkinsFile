@@ -3,23 +3,23 @@ pipeline {
 
   stages {
   //
-  stage('Build') {
-    steps{
-     timeout(time:1, unit:'MINUTES') {
-      sh 'mvn clean package'
-    } 
-    }
-    
+    stage('Build') {
+      steps{
+         timeout(time:1, unit:'MINUTES') {
+          sh 'mvn clean package'
+        } 
+      }
+
+   }
+
+  }
+    post{
+      failure{
+        sh "echo failed to run all stages!"
+      }
     }
     
 
-    post{
-    failure{
-    sh "echo failed to run all stages!"
-    }
-    }
-    
-    }
    
 
 }
